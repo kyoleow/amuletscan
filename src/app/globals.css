@@ -1,0 +1,35 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  @apply bg-white dark:bg-gray-900 text-gray-900 dark:text-white transition-colors;
+}
+
+/* Buddhist-inspired design tokens */
+:root {
+  --gold: #D4AF37;
+  --saffron: #F4A460;
+  --maroon: #7D0000;
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  @apply bg-gray-100 dark:bg-gray-800;
+}
+
+::-webkit-scrollbar-thumb {
+  @apply bg-gold rounded-full;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  @apply bg-saffron;
+}
