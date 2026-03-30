@@ -153,3 +153,4 @@ https://github.com/kyoleow/amuletscan/issues
 **Version:** v20260330v01  
 **Built:** 2026-03-30  
 **Status:** MVP Ready for Vercel Deployment ✅
+# Firebase configured
