@@ -74,11 +74,6 @@ export default function Home() {
           </button>
         </div>
 
-        {/* Version Footer */}
-        <div className="text-right text-xs text-gray-400 dark:text-gray-500 mb-8">
-          v20260330v01
-        </div>
-
         {/* Main Content */}
         {step === 'input' && (
           <div className="space-y-6 bg-white dark:bg-gray-800 p-8 rounded-xl border-2 border-gold shadow-lg">

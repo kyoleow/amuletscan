@@ -1,5 +1,6 @@
 import type { Metadata } from 'next'
 import './globals.css'
+import VersionFooter from '@/components/VersionFooter'
 
 export const metadata: Metadata = {
   title: 'Amulet Scan - Thai Amulet Identifier',
@@ -17,6 +18,7 @@ export default function RootLayout({
         <div className="max-w-4xl mx-auto px-4 py-8">
           {children}
         </div>
+        <VersionFooter version="v20260330v02" showBuildDetails={true} />
       </body>
     </html>
   )

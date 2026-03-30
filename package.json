@@ -1,6 +1,6 @@
 {
   "name": "amuletscan",
-  "version": "1.0.0",
+  "version": "v20260330v02",
   "description": "Thai Amulet Identifier",
   "scripts": {
     "dev": "next dev",
