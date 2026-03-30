@@ -13,16 +13,34 @@ export default function CameraCapture({ onCapture }: CameraCaptureProps) {
 
   const startCamera = async () => {
     try {
-      const stream = await navigator.mediaDevices.getUserMedia({
-        video: { facingMode: 'environment' },
-      })
+      // Request camera permission with better mobile support
+      const constraints = {
+        video: {
+          facingMode: 'environment',
+          width: { ideal: 1280 },
+          height: { ideal: 720 },
+        },
+        audio: false,
+      }
+      
+      const stream = await navigator.mediaDevices.getUserMedia(constraints)
       if (videoRef.current) {
         videoRef.current.srcObject = stream
+        // Ensure video starts playing on iOS
+        videoRef.current.play().catch((err) => console.error('Play error:', err))
         setIsCameraActive(true)
       }
-    } catch (err) {
-      console.error('Camera access denied:', err)
-      alert('Unable to access camera. Please check permissions.')
+    } catch (err: unknown) {
+      const error = err as any
+      console.error('Camera access error:', error)
+      
+      if (error.name === 'NotAllowedError') {
+        alert('Camera permission denied. Please enable camera access in your device settings.')
+      } else if (error.name === 'NotFoundError') {
+        alert('No camera device found on this device.')
+      } else {
+        alert('Unable to access camera. Please check permissions and try again.')
+      }
     }
   }
 
@@ -63,7 +81,9 @@ export default function CameraCapture({ onCapture }: CameraCaptureProps) {
             ref={videoRef}
             autoPlay
             playsInline
+            muted
             className="w-full rounded-lg border-2 border-gold"
+            style={{ transform: 'scaleX(-1)' }}
           />
           <div className="flex gap-2">
             <button
